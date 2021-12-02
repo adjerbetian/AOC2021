@@ -1,6 +1,6 @@
 import unittest
 
-from day01.day_01 import count_increases
+from day01.main import count_increases
 
 
 TEST_DEPTHS = [
