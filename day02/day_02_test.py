@@ -1,7 +1,7 @@
 import unittest
 
-from day02.Submarine import Submarine
-from day02.Instruction import parse_instructions
+from day02 import Submarine
+from day02 import parse_instructions
 
 TEST_INSTRUCTIONS = [
     'forward 5',

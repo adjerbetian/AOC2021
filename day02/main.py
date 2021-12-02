@@ -1,5 +1,5 @@
-from day02.Instruction import parse_instructions
-from day02.Submarine import Submarine
+from day02 import parse_instructions
+from day02 import Submarine
 
 
 def main():
@@ -9,7 +9,7 @@ def main():
 
   submarine.follow_instructions(instructions)
 
-  log(1, submarine.x * submarine.depth)
+  log(submarine.x * submarine.depth)
 
 
 def read_lines(file_path: str) -> list[str]:
@@ -17,8 +17,8 @@ def read_lines(file_path: str) -> list[str]:
     return file.read().splitlines()
 
 
-def log(part: int, *args):
-  print(f'Day 02 - part {str(part)}:', *args)
+def log(*args):
+  print(f'Day 02:', *args)
 
 
 if __name__ == '__main__':

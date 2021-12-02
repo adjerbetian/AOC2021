@@ -46,7 +46,8 @@ def parse_instructions(lines: list[str]) -> list[Instruction]:
 def parse_instruction(line: str) -> Instruction:
   direction, units = line.split()
   units = int(units)
-  if direction == 'forward': return Forward(units)
-  if direction == 'up': return Up(units)
-  if direction == 'down': return Down(units)
-  raise ValueError(f'Wrong instruction "{line}"')
+  match direction:
+    case 'forward': return Forward(units)
+    case 'up': return Up(units)
+    case 'down': return Down(units)
+    case _: raise ValueError(f'Wrong instruction "{line}"')
