@@ -22,7 +22,7 @@ class TestDay2(unittest.TestCase):
     submarine.follow_instructions(instructions)
 
     self.assertEqual(submarine.x, 15)
-    self.assertEqual(submarine.depth, 10)
+    self.assertEqual(submarine.depth, 60)
 
 
 if __name__ == '__main__':

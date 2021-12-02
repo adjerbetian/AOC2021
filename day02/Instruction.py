@@ -1,6 +1,6 @@
 import abc
 
-from day02.Localisation import Localisation
+from day02.State import State
 
 
 class Instruction(metaclass=abc.ABCMeta):
@@ -8,31 +8,34 @@ class Instruction(metaclass=abc.ABCMeta):
     self.units = units
 
   @abc.abstractmethod
-  def move(self, localisation: Localisation) -> Localisation:
+  def update_state(self, state: State) -> State:
     raise NotImplementedError()
 
 
 class Forward(Instruction):
-  def move(self, localisation: Localisation) -> Localisation:
-    return Localisation(
-        localisation.x + self.units,
-        localisation.depth,
+  def update_state(self, state: State) -> State:
+    return State(
+        x=state.x + self.units,
+        depth=state.depth + state.aim * self.units,
+        aim=state.aim
     )
 
 
 class Up(Instruction):
-  def move(self, localisation: Localisation) -> Localisation:
-    return Localisation(
-        localisation.x,
-        localisation.depth - self.units,
+  def update_state(self, state: State) -> State:
+    return State(
+        x=state.x,
+        depth=state.depth,
+        aim=state.aim - self.units,
     )
 
 
 class Down(Instruction):
-  def move(self, localisation: Localisation) -> Localisation:
-    return Localisation(
-        localisation.x,
-        localisation.depth + self.units,
+  def update_state(self, state: State) -> State:
+    return State(
+        x=state.x,
+        depth=state.depth,
+        aim=state.aim + self.units,
     )
 
 
