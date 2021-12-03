@@ -7,12 +7,7 @@ class Binary(list[bool]):
 
 
 def to_int(binary: Binary):
-  value = 0
-  power = 1
-  for bit in reversed(binary):
-    value += power * bit
-    power *= 2
-  return value
+  return int(str(binary), 2)
 
 
 def parse(line: str) -> Binary:
