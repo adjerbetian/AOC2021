@@ -41,6 +41,21 @@ class TestDay3(unittest.TestCase):
 
     self.assertEqual(9, report.get_epsilon())
 
+  def test_life_support_rating(self):
+    report = DiagnosticReport(DIAGNOSTIC_REPORT)
+
+    self.assertEqual(230, report.get_life_support_rating())
+
+  def test_oxygen_generator_rating(self):
+    report = DiagnosticReport(DIAGNOSTIC_REPORT)
+
+    self.assertEqual(23, report.get_oxygen_generator_rating())
+
+  def test_co2_scrubber_rating(self):
+    report = DiagnosticReport(DIAGNOSTIC_REPORT)
+
+    self.assertEqual(10, report.get_co2_scrubber_rating())
+
 
 if __name__ == '__main__':
   unittest.main()

@@ -6,6 +6,7 @@ def main():
   report = DiagnosticReport(lines)
 
   log('part 1', report.get_power_consumption())
+  log('part 2', report.get_life_support_rating())
 
 
 def read_lines(file_path: str) -> list[str]:
