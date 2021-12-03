@@ -1,12 +1,12 @@
-from day03.DiagnosticReport import DiagnosticReport
+import day03.diagnostic_report as DiagnosticReport
 
 
 def main():
   lines = read_lines('input.txt')
-  report = DiagnosticReport(lines)
+  report = DiagnosticReport.build_report(lines)
 
-  log('part 1', report.get_power_consumption())
-  log('part 2', report.get_life_support_rating())
+  log('part 1', DiagnosticReport.get_power_consumption(report))
+  log('part 2', DiagnosticReport.get_life_support_rating(report))
 
 
 def read_lines(file_path: str) -> list[str]:
