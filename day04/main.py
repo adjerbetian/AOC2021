@@ -12,6 +12,7 @@ def main():
   boards = [Board(parse_grid(grid)) for grid in grids]
 
   log('part 1:', game.get_first_winner_score(boards, numbers_to_draw))
+  log('part 2:', game.get_last_winner_score(boards, numbers_to_draw))
 
 
 def parse_numbers(numbers_to_draw: str, sep: str):

@@ -33,5 +33,10 @@ class Day04Test(unittest.TestCase):
         ]),
     ]
 
-    score = game.get_first_winner_score(boards, numbers_to_draw)
-    self.assertEqual(4512, score)
+    with self.subTest('get_first_winner_score'):
+      score = game.get_first_winner_score(boards, numbers_to_draw)
+      self.assertEqual(4512, score)
+
+    with self.subTest('get_last_winner_score'):
+      score = game.get_last_winner_score(boards, numbers_to_draw)
+      self.assertEqual(1924, score)
