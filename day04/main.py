@@ -1,12 +1,13 @@
 import re
 
+import utils
 from day04.board import Board
 from day04.board import Grid
 import day04.game as game
 
 
 def main():
-  [numbers_to_draw, *grids] = read_lines('input.txt')
+  [numbers_to_draw, *grids] = utils.read_blocks('input.txt')
 
   numbers_to_draw = parse_numbers(numbers_to_draw, ',')
   boards = [Board(parse_grid(grid)) for grid in grids]
@@ -24,11 +25,6 @@ def parse_grid(lines: str) -> Grid:
       parse_numbers(line.strip(), r'\s+')
       for line in lines.split('\n')
   ]
-
-
-def read_lines(file_path: str) -> list[str]:
-  with open(file_path, 'r') as file:
-    return file.read().strip().split('\n\n')
 
 
 def log(*args):

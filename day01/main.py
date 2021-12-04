@@ -1,16 +1,10 @@
+import utils
+
 
 def main():
-  depths = read_ints('input.txt')
+  depths = utils.read_ints('input.txt')
   log(1, count_increases(depths))
   log(2, count_increases(depths, window_size=3))
-
-
-def read_ints(file_path: str) -> list[int]:
-  with open(file_path, 'r') as file:
-    return [
-        int(line)
-        for line in file.read().splitlines()
-    ]
 
 
 def count_increases(

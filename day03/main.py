@@ -1,17 +1,13 @@
-import day03.diagnostic_report as DiagnosticReport
+import utils
+import day03.diagnostic_report as diagnostic_report
 
 
 def main():
-  lines = read_lines('input.txt')
-  report = DiagnosticReport.build_report(lines)
+  lines = utils.read_lines('input.txt')
+  report = diagnostic_report.build_report(lines)
 
-  log('part 1', DiagnosticReport.get_power_consumption(report))
-  log('part 2', DiagnosticReport.get_life_support_rating(report))
-
-
-def read_lines(file_path: str) -> list[str]:
-  with open(file_path, 'r') as file:
-    return file.read().splitlines()
+  log('part 1', diagnostic_report.get_power_consumption(report))
+  log('part 2', diagnostic_report.get_life_support_rating(report))
 
 
 def log(*args):
