@@ -5,7 +5,7 @@ import utils
 def main():
   lines = vents.parse_lines(utils.read_lines('input.txt'))
 
-  log('part 1', len(vents.get_points_with_strength_at_least(lines, 2)))
+  log(len(vents.get_points_with_strength_at_least(lines, 2)))
 
 
 def log(*args):
