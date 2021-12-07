@@ -4,9 +4,7 @@ import day06.lanternfish as lanternfish
 
 
 def main():
-  ages = utils.read_lines('input.txt')[0]
-  ages = [int(age) for age in ages.split(',')]
-
+  ages = utils.read_int_line('input.txt')
   population0 = lanternfish.build_population(ages)
 
   population80 = lanternfish.pass_n_days(population0, 80)
