@@ -34,6 +34,16 @@ class Heightmap:
         if (i, j) == position: continue
         yield i, j
 
+  def iter_cross_neighbours(self, position: Position) -> Iterable[Position]:
+    if position[0] > 0:
+      yield position[0] - 1, position[1]
+    if position[0] < self.n - 1:
+      yield position[0] + 1, position[1]
+    if position[1] > 0:
+      yield position[0], position[1] - 1
+    if position[1] < self.m - 1:
+      yield position[0], position[1] + 1
+
   def iter_positions(self) -> Iterable[Position]:
     for i in range(self.n):
       for j in range(self.m):
@@ -41,3 +51,26 @@ class Heightmap:
 
   def __getitem__(self, position: Position) -> int:
     return self.heights[position[0]][position[1]]
+
+  def get_basins(self) -> list[set[Position]]:
+    return [
+        self.get_basin(position)
+        for position in self.iter_positions()
+        if self.is_low_point(position)
+    ]
+
+  def get_basin(self, low_point: Position) -> set[Position]:
+    visited = set[Position]()
+    to_visit = set[Position]()
+    to_visit.add(low_point)
+    while len(to_visit) > 0:
+      new_to_visit = set[Position]()
+      for position in to_visit:
+        for neighbour in self.iter_cross_neighbours(position):
+          if neighbour in to_visit: continue
+          if neighbour in visited: continue
+          if self[neighbour] == 9: continue
+          new_to_visit.add(neighbour)
+        visited.add(position)
+      to_visit = new_to_visit
+    return visited
